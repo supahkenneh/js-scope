@@ -3,10 +3,14 @@ var isCookieJarOpen = null;
 
 function closeLid() {
   /* answer here */
+  isCookieJarOpen = false;
+  return isCookieJarOpen;
 }
+
 
 function openLid() {
   /* answer here */
+  return isCookieJarOpen = true;
 }
 
 
@@ -17,7 +21,7 @@ function outerFunction() {
 
   function innerFunction() {
     var world = 'World';
-    return /* answer here */;
+    return hello + ' ' + world/* answer here */;
   }
   return innerFunction();
 }
@@ -31,8 +35,8 @@ function addMatrixElements(matrix) {
 
   for(var i = 0; i < matrix.length; i++) {
     /* fix counter variables in the second loop */
-    for(var i = 0; i < matrix[i].length; i++) {
-      result = result + matrix[i][i];
+    for(var j = 0; j < matrix[i].length; j++) {
+      result = result + matrix[i][j];
     }
   }
   return result;
@@ -43,22 +47,22 @@ function addMatrixElements(matrix) {
 // Neo's information and not Morpheus'.  Fix it!
 function sendDataToClient() {
 
-  var userObject = {
+  var userObject = { //exists in sendDataToClient
     handle: 'neo',
     authenticated: false
   }
 
-  function authenticateUser(obj, username) {
+  function authenticateUser(obj, username) { //child of sendDataToClient
     var userObject = {
       handle: 'morpheus',
       authenticated: false
     };
 
-    if (userObject.handle === username) {
-      userObject.authenticated = true;
-      return userObject
+    if (obj.handle === username) { //child of authenticateUser
+      obj.authenticated = true;
+      return obj
     } else {
-      return userObject
+      return obj
     }
   }
   authenticateUser(userObject, 'neo')
